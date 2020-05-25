@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.paizoun.co",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.8.0",
+    "applicationType": "monolith",
+    "baseName": "paizoun",
+    "packageName": "com.paizoun.co",
+    "packageFolder": "com/paizoun/co",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OWIxNzgzMzU3NmQ3NGUxZGU2ZmU0YTc3ZWVkZWY0YzhhOWMzNzIzNDBiODBkYWIwODc1ZTg4NWRiMmYzZDM3NDJmMWJkYzY0MzU4ZjcwYzc3NzYxZmE1MWZlMWJiMzU2ZTNiYjcyMzM3ZGM3NWYwODQwMDdlOWU2OWUxMjY4MTc=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "simplex",
+    "clientThemeVariant": "light",
+    "creationTimestamp": 1590368777503,
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": ["es", "en"],
+    "blueprints": []
+  }
+}
