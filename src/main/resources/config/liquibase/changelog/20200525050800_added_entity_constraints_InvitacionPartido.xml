@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <!--
+        Added the constraints for entity InvitacionPartido.
+    -->
+    <changeSet id="20200525050800-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="cancha_id"
+                                 baseTableName="invitacion_partido"
+                                 constraintName="fk_invitacion_partido_cancha_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cancha"/>
+
+        <addForeignKeyConstraint baseColumnNames="equipoa_id"
+                                 baseTableName="invitacion_partido"
+                                 constraintName="fk_invitacion_partido_equipoa_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="equipo"/>
+
+        <addForeignKeyConstraint baseColumnNames="equipob_id"
+                                 baseTableName="invitacion_partido"
+                                 constraintName="fk_invitacion_partido_equipob_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="equipo"/>
+
+    </changeSet>
+</databaseChangeLog>

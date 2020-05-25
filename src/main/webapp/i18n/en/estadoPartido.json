@@ -1,0 +1,23 @@
+{
+  "paizounApp": {
+    "estadoPartido": {
+      "home": {
+        "title": "Estado Partidos",
+        "createLabel": "Create a new Estado Partido",
+        "createOrEditLabel": "Create or edit a Estado Partido",
+        "notFound": "No Estado Partidos found"
+      },
+      "created": "A new Estado Partido is created with identifier {{ param }}",
+      "updated": "A Estado Partido is updated with identifier {{ param }}",
+      "deleted": "A Estado Partido is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Estado Partido {{ id }}?"
+      },
+      "detail": {
+        "title": "Estado Partido"
+      },
+      "estado": "Estado",
+      "partido": "Partido"
+    }
+  }
+}

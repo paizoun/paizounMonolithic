@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-invitacion-partido-heading" jhiTranslate="paizounApp.invitacionPartido.home.createOrEditLabel">Create or edit a Invitacion Partido</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.fechaHoraCreacion" for="field_fechaHoraCreacion">Fecha Hora Creacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaHoraCreacion" type="datetime-local" class="form-control" name="fechaHoraCreacion" formControlName="fechaHoraCreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechaHoraCreacion')!.invalid && (editForm.get('fechaHoraCreacion')!.dirty || editForm.get('fechaHoraCreacion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaHoraCreacion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechaHoraCreacion')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.fechaHoraPartido" for="field_fechaHoraPartido">Fecha Hora Partido</label>
+                    <div class="d-flex">
+                        <input id="field_fechaHoraPartido" type="datetime-local" class="form-control" name="fechaHoraPartido" formControlName="fechaHoraPartido" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('fechaHoraPartido')!.invalid && (editForm.get('fechaHoraPartido')!.dirty || editForm.get('fechaHoraPartido')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('fechaHoraPartido')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('fechaHoraPartido')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.equipoAConfirmado" for="field_equipoAConfirmado">Equipo A Confirmado</label>
+                    <input type="checkbox" class="form-control" name="equipoAConfirmado" id="field_equipoAConfirmado"
+                           formControlName="equipoAConfirmado"/>
+                    <div *ngIf="editForm.get('equipoAConfirmado')!.invalid && (editForm.get('equipoAConfirmado')!.dirty || editForm.get('equipoAConfirmado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('equipoAConfirmado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.equipoBConfirmado" for="field_equipoBConfirmado">Equipo B Confirmado</label>
+                    <input type="checkbox" class="form-control" name="equipoBConfirmado" id="field_equipoBConfirmado"
+                           formControlName="equipoBConfirmado"/>
+                    <div *ngIf="editForm.get('equipoBConfirmado')!.invalid && (editForm.get('equipoBConfirmado')!.dirty || editForm.get('equipoBConfirmado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('equipoBConfirmado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.cancha" for="field_cancha">Cancha</label>
+                    <select class="form-control" id="field_cancha" name="cancha" formControlName="cancha">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="canchaOption.id === editForm.get('cancha')!.value?.id ? editForm.get('cancha')!.value : canchaOption" *ngFor="let canchaOption of canchas; trackBy: trackById">{{ canchaOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.equipoA" for="field_equipoA">Equipo A</label>
+                    <select class="form-control" id="field_equipoA" name="equipoA" formControlName="equipoA">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="equipoOption.id === editForm.get('equipoA')!.value?.id ? editForm.get('equipoA')!.value : equipoOption" *ngFor="let equipoOption of equipoas; trackBy: trackById">{{ equipoOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.invitacionPartido.equipoB" for="field_equipoB">Equipo B</label>
+                    <select class="form-control" id="field_equipoB" name="equipoB" formControlName="equipoB">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="equipoOption.id === editForm.get('equipoB')!.value?.id ? editForm.get('equipoB')!.value : equipoOption" *ngFor="let equipoOption of equipobs; trackBy: trackById">{{ equipoOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,16 +1,14 @@
 
 
 
-entity UsuarioEquipo {
-	fechaHora Instant required
-}
+
 entity Cancha {
 	nombre String required,
     descripcion String,
     direccion String required,
-    ublicacion String required,
+    ubicacion String required,
     imagen ImageBlob,
-    fechaCreacion LocalDate,
+    fechaCreacion Instant,
   	estado Boolean required
 }
 entity TipoCancha {
@@ -52,15 +50,14 @@ relationship OneToMany {
 }
 
 relationship OneToOne {
-	Cancha to Partido{Cancha}
-    Equipo to InvitacionPartido{EquipoA}
-    Equipo to InvitacionPartido{EquipoA}
-    InvitacionPartido to Partido{InvitacionPartido}
-    Partido to ResultadoPartido{Partido}
-}
-relationship ManyToMany {
-	Equipo to UsuarioEquipo {Equipo}
-    User to UsuarioEquipo {User}
+    InvitacionPartido{Cancha} to Cancha
+    InvitacionPartido{EquipoA} to Equipo
+    InvitacionPartido{EquipoB} to Equipo
+    Partido{InvitacionPartido} to InvitacionPartido
+    ResultadoPartido{Partido} to Partido
 }
 
-paginate Cancha, Equipo, Partido, InvitacionPartido, UsuarioEquipo with pagination
+paginate Cancha with pagination
+paginate Equipo with pagination
+paginate Partido with pagination
+paginate InvitacionPartido with pagination

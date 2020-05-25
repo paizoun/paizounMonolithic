@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="invitacionPartido">
+            <h2><span jhiTranslate="paizounApp.invitacionPartido.detail.title">Invitacion Partido</span> {{ invitacionPartido.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.fechaHoraCreacion">Fecha Hora Creacion</span></dt>
+                <dd>
+                    <span>{{ invitacionPartido.fechaHoraCreacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.fechaHoraPartido">Fecha Hora Partido</span></dt>
+                <dd>
+                    <span>{{ invitacionPartido.fechaHoraPartido }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.equipoAConfirmado">Equipo A Confirmado</span></dt>
+                <dd>
+                    <span>{{ invitacionPartido.equipoAConfirmado }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.equipoBConfirmado">Equipo B Confirmado</span></dt>
+                <dd>
+                    <span>{{ invitacionPartido.equipoBConfirmado }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.cancha">Cancha</span></dt>
+                <dd>
+                    <div *ngIf="invitacionPartido.cancha">
+                        <a [routerLink]="['/cancha', invitacionPartido.cancha?.id, 'view']">{{ invitacionPartido.cancha?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.equipoA">Equipo A</span></dt>
+                <dd>
+                    <div *ngIf="invitacionPartido.equipoA">
+                        <a [routerLink]="['/equipo', invitacionPartido.equipoA?.id, 'view']">{{ invitacionPartido.equipoA?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.invitacionPartido.equipoB">Equipo B</span></dt>
+                <dd>
+                    <div *ngIf="invitacionPartido.equipoB">
+                        <a [routerLink]="['/equipo', invitacionPartido.equipoB?.id, 'view']">{{ invitacionPartido.equipoB?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/invitacion-partido', invitacionPartido.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

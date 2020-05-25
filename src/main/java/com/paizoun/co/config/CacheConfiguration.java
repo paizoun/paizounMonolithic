@@ -45,6 +45,15 @@ public class CacheConfiguration {
             createCache(cm, com.paizoun.co.domain.User.class.getName());
             createCache(cm, com.paizoun.co.domain.Authority.class.getName());
             createCache(cm, com.paizoun.co.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.paizoun.co.domain.Cancha.class.getName());
+            createCache(cm, com.paizoun.co.domain.TipoCancha.class.getName());
+            createCache(cm, com.paizoun.co.domain.TipoCancha.class.getName() + ".canchas");
+            createCache(cm, com.paizoun.co.domain.Equipo.class.getName());
+            createCache(cm, com.paizoun.co.domain.EstadoPartido.class.getName());
+            createCache(cm, com.paizoun.co.domain.EstadoPartido.class.getName() + ".partidos");
+            createCache(cm, com.paizoun.co.domain.Partido.class.getName());
+            createCache(cm, com.paizoun.co.domain.InvitacionPartido.class.getName());
+            createCache(cm, com.paizoun.co.domain.ResultadoPartido.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

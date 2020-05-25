@@ -1,0 +1,31 @@
+{
+    "name": "EstadoPartido",
+    "fields": [
+        {
+            "fieldName": "estado",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "partido",
+            "otherEntityRelationshipName": "estadoPartido",
+            "relationshipName": "partido"
+        }
+    ],
+    "changelogDate": "20200525050600",
+    "entityTableName": "estado_partido",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,48 @@
+{
+    "name": "ResultadoPartido",
+    "fields": [
+        {
+            "fieldName": "golesEqiopoA",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "golesEqiopoB",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ganoEquipoA",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "ganoEquipoB",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "partido",
+            "otherEntityRelationshipName": "resultadoPartido",
+            "relationshipName": "partido",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200525050900",
+    "entityTableName": "resultado_partido",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,28 @@
+{
+  "paizounApp": {
+    "invitacionPartido": {
+      "home": {
+        "title": "Invitacion Partidos",
+        "createLabel": "Crear nuevo Invitacion Partido",
+        "createOrEditLabel": "Crear o editar Invitacion Partido",
+        "notFound": "Ningún Invitacion Partidos encontrado"
+      },
+      "created": "Un nuevo Invitacion Partido ha sido creado con el identificador {{ param }}",
+      "updated": "Un Invitacion Partido ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Invitacion Partido ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Invitacion Partido {{ id }}?"
+      },
+      "detail": {
+        "title": "Invitacion Partido"
+      },
+      "fechaHoraCreacion": "Fecha Hora Creacion",
+      "fechaHoraPartido": "Fecha Hora Partido",
+      "equipoAConfirmado": "Equipo A Confirmado",
+      "equipoBConfirmado": "Equipo B Confirmado",
+      "cancha": "Cancha",
+      "equipoA": "Equipo A",
+      "equipoB": "Equipo B"
+    }
+  }
+}

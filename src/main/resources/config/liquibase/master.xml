@@ -14,6 +14,17 @@
     <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050300_added_entity_Cancha.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050400_added_entity_TipoCancha.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050500_added_entity_Equipo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050600_added_entity_EstadoPartido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050700_added_entity_Partido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050800_added_entity_InvitacionPartido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050900_added_entity_ResultadoPartido.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20200525050300_added_entity_constraints_Cancha.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050700_added_entity_constraints_Partido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050800_added_entity_constraints_InvitacionPartido.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20200525050900_added_entity_constraints_ResultadoPartido.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

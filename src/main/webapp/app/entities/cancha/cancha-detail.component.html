@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="cancha">
+            <h2><span jhiTranslate="paizounApp.cancha.detail.title">Cancha</span> {{ cancha.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="paizounApp.cancha.nombre">Nombre</span></dt>
+                <dd>
+                    <span>{{ cancha.nombre }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.descripcion">Descripcion</span></dt>
+                <dd>
+                    <span>{{ cancha.descripcion }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.direccion">Direccion</span></dt>
+                <dd>
+                    <span>{{ cancha.direccion }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.ubicacion">Ubicacion</span></dt>
+                <dd>
+                    <span>{{ cancha.ubicacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.imagen">Imagen</span></dt>
+                <dd>
+                    <div *ngIf="cancha.imagen">
+                        <a (click)="openFile(cancha?.imagenContentType!, cancha?.imagen)">
+                            <img [src]="'data:' + cancha.imagenContentType + ';base64,' + cancha.imagen" style="max-width: 100%;" alt="cancha image"/>
+                        </a>
+                        {{ cancha.imagenContentType }}, {{ byteSize(cancha.imagen) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.fechaCreacion">Fecha Creacion</span></dt>
+                <dd>
+                    <span>{{ cancha.fechaCreacion }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.estado">Estado</span></dt>
+                <dd>
+                    <span>{{ cancha.estado }}</span>
+                </dd>
+                <dt><span jhiTranslate="paizounApp.cancha.tipoCancha">Tipo Cancha</span></dt>
+                <dd>
+                    <div *ngIf="cancha.tipoCancha">
+                        <a [routerLink]="['/tipo-cancha', cancha.tipoCancha?.id, 'view']">{{ cancha.tipoCancha?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/cancha', cancha.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-resultado-partido-heading" jhiTranslate="paizounApp.resultadoPartido.home.createOrEditLabel">Create or edit a Resultado Partido</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.resultadoPartido.golesEqiopoA" for="field_golesEqiopoA">Goles Eqiopo A</label>
+                    <input type="number" class="form-control" name="golesEqiopoA" id="field_golesEqiopoA"
+                           formControlName="golesEqiopoA"/>
+                    <div *ngIf="editForm.get('golesEqiopoA')!.invalid && (editForm.get('golesEqiopoA')!.dirty || editForm.get('golesEqiopoA')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('golesEqiopoA')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('golesEqiopoA')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.resultadoPartido.golesEqiopoB" for="field_golesEqiopoB">Goles Eqiopo B</label>
+                    <input type="number" class="form-control" name="golesEqiopoB" id="field_golesEqiopoB"
+                           formControlName="golesEqiopoB"/>
+                    <div *ngIf="editForm.get('golesEqiopoB')!.invalid && (editForm.get('golesEqiopoB')!.dirty || editForm.get('golesEqiopoB')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('golesEqiopoB')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('golesEqiopoB')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.resultadoPartido.ganoEquipoA" for="field_ganoEquipoA">Gano Equipo A</label>
+                    <input type="checkbox" class="form-control" name="ganoEquipoA" id="field_ganoEquipoA"
+                           formControlName="ganoEquipoA"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.resultadoPartido.ganoEquipoB" for="field_ganoEquipoB">Gano Equipo B</label>
+                    <input type="checkbox" class="form-control" name="ganoEquipoB" id="field_ganoEquipoB"
+                           formControlName="ganoEquipoB"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.resultadoPartido.partido" for="field_partido">Partido</label>
+                    <select class="form-control" id="field_partido" name="partido" formControlName="partido">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="partidoOption.id === editForm.get('partido')!.value?.id ? editForm.get('partido')!.value : partidoOption" *ngFor="let partidoOption of partidos; trackBy: trackById">{{ partidoOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

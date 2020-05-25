@@ -1,0 +1,26 @@
+{
+  "paizounApp": {
+    "resultadoPartido": {
+      "home": {
+        "title": "Resultado Partidos",
+        "createLabel": "Crear nuevo Resultado Partido",
+        "createOrEditLabel": "Crear o editar Resultado Partido",
+        "notFound": "Ningún Resultado Partidos encontrado"
+      },
+      "created": "Un nuevo Resultado Partido ha sido creado con el identificador {{ param }}",
+      "updated": "Un Resultado Partido ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Resultado Partido ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Resultado Partido {{ id }}?"
+      },
+      "detail": {
+        "title": "Resultado Partido"
+      },
+      "golesEqiopoA": "Goles Eqiopo A",
+      "golesEqiopoB": "Goles Eqiopo B",
+      "ganoEquipoA": "Gano Equipo A",
+      "ganoEquipoB": "Gano Equipo B",
+      "partido": "Partido"
+    }
+  }
+}

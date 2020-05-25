@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="paizounApp.resultadoPartido.home.title">Resultado Partidos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-resultado-partido" [routerLink]="['/resultado-partido/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="paizounApp.resultadoPartido.home.createLabel">
+            Create a new Resultado Partido
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="resultadoPartidos?.length === 0">
+        <span jhiTranslate="paizounApp.resultadoPartido.home.notFound">No resultadoPartidos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="resultadoPartidos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="paizounApp.resultadoPartido.golesEqiopoA">Goles Eqiopo A</span></th>
+                    <th scope="col" ><span jhiTranslate="paizounApp.resultadoPartido.golesEqiopoB">Goles Eqiopo B</span></th>
+                    <th scope="col" ><span jhiTranslate="paizounApp.resultadoPartido.ganoEquipoA">Gano Equipo A</span></th>
+                    <th scope="col" ><span jhiTranslate="paizounApp.resultadoPartido.ganoEquipoB">Gano Equipo B</span></th>
+                    <th scope="col" ><span jhiTranslate="paizounApp.resultadoPartido.partido">Partido</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let resultadoPartido of resultadoPartidos ;trackBy: trackId">
+                    <td><a [routerLink]="['/resultado-partido', resultadoPartido.id, 'view']">{{ resultadoPartido.id }}</a></td>
+                    <td>{{ resultadoPartido.golesEqiopoA }}</td>
+                    <td>{{ resultadoPartido.golesEqiopoB }}</td>
+                    <td>{{ resultadoPartido.ganoEquipoA }}</td>
+                    <td>{{ resultadoPartido.ganoEquipoB }}</td>
+                    <td>
+                        <div *ngIf="resultadoPartido.partido">
+                            <a [routerLink]="['/partido', resultadoPartido.partido?.id, 'view']" >{{ resultadoPartido.partido?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/resultado-partido', resultadoPartido.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/resultado-partido', resultadoPartido.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(resultadoPartido)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

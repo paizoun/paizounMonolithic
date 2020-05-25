@@ -1,0 +1,70 @@
+{
+    "name": "InvitacionPartido",
+    "fields": [
+        {
+            "fieldName": "fechaHoraCreacion",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "fechaHoraPartido",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "equipoAConfirmado",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "equipoBConfirmado",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "cancha",
+            "otherEntityRelationshipName": "invitacionPartido",
+            "relationshipName": "cancha",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "equipo",
+            "otherEntityRelationshipName": "invitacionPartido",
+            "relationshipName": "equipoA",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "equipo",
+            "otherEntityRelationshipName": "invitacionPartido",
+            "relationshipName": "equipoB",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20200525050800",
+    "entityTableName": "invitacion_partido",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

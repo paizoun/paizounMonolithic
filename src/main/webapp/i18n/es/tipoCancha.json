@@ -1,0 +1,24 @@
+{
+  "paizounApp": {
+    "tipoCancha": {
+      "home": {
+        "title": "Tipo Canchas",
+        "createLabel": "Crear nuevo Tipo Cancha",
+        "createOrEditLabel": "Crear o editar Tipo Cancha",
+        "notFound": "Ningún Tipo Canchas encontrado"
+      },
+      "created": "Un nuevo Tipo Cancha ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipo Cancha ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipo Cancha ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipo Cancha {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipo Cancha"
+      },
+      "nombreTipo": "Nombre Tipo",
+      "cantidadJugadores": "Cantidad Jugadores",
+      "cancha": "Cancha"
+    }
+  }
+}

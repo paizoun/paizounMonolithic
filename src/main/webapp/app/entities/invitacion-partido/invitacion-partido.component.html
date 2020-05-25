@@ -1,0 +1,95 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="paizounApp.invitacionPartido.home.title">Invitacion Partidos</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-invitacion-partido" [routerLink]="['/invitacion-partido/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="paizounApp.invitacionPartido.home.createLabel">
+            Create a new Invitacion Partido
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="invitacionPartidos?.length === 0">
+        <span jhiTranslate="paizounApp.invitacionPartido.home.notFound">No invitacionPartidos found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="invitacionPartidos?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechaHoraCreacion"><span jhiTranslate="paizounApp.invitacionPartido.fechaHoraCreacion">Fecha Hora Creacion</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="fechaHoraPartido"><span jhiTranslate="paizounApp.invitacionPartido.fechaHoraPartido">Fecha Hora Partido</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipoAConfirmado"><span jhiTranslate="paizounApp.invitacionPartido.equipoAConfirmado">Equipo A Confirmado</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipoBConfirmado"><span jhiTranslate="paizounApp.invitacionPartido.equipoBConfirmado">Equipo B Confirmado</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cancha.id"><span jhiTranslate="paizounApp.invitacionPartido.cancha">Cancha</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipoA.id"><span jhiTranslate="paizounApp.invitacionPartido.equipoA">Equipo A</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="equipoB.id"><span jhiTranslate="paizounApp.invitacionPartido.equipoB">Equipo B</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let invitacionPartido of invitacionPartidos ;trackBy: trackId">
+                    <td><a [routerLink]="['/invitacion-partido', invitacionPartido.id, 'view']">{{ invitacionPartido.id }}</a></td>
+                    <td>{{ invitacionPartido.fechaHoraCreacion | date:'medium' }}</td>
+                    <td>{{ invitacionPartido.fechaHoraPartido | date:'medium' }}</td>
+                    <td>{{ invitacionPartido.equipoAConfirmado }}</td>
+                    <td>{{ invitacionPartido.equipoBConfirmado }}</td>
+                    <td>
+                        <div *ngIf="invitacionPartido.cancha">
+                            <a [routerLink]="['/cancha', invitacionPartido.cancha?.id, 'view']" >{{ invitacionPartido.cancha?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="invitacionPartido.equipoA">
+                            <a [routerLink]="['/equipo', invitacionPartido.equipoA?.id, 'view']" >{{ invitacionPartido.equipoA?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="invitacionPartido.equipoB">
+                            <a [routerLink]="['/equipo', invitacionPartido.equipoB?.id, 'view']" >{{ invitacionPartido.equipoB?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/invitacion-partido', invitacionPartido.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/invitacion-partido', invitacionPartido.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(invitacionPartido)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="invitacionPartidos?.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-cancha-heading" jhiTranslate="paizounApp.cancha.home.createOrEditLabel">Create or edit a Cancha</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.nombre" for="field_nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="field_nombre"
+                           formControlName="nombre"/>
+                    <div *ngIf="editForm.get('nombre')!.invalid && (editForm.get('nombre')!.dirty || editForm.get('nombre')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombre')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.descripcion" for="field_descripcion">Descripcion</label>
+                    <input type="text" class="form-control" name="descripcion" id="field_descripcion"
+                           formControlName="descripcion"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.direccion" for="field_direccion">Direccion</label>
+                    <input type="text" class="form-control" name="direccion" id="field_direccion"
+                           formControlName="direccion"/>
+                    <div *ngIf="editForm.get('direccion')!.invalid && (editForm.get('direccion')!.dirty || editForm.get('direccion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('direccion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.ubicacion" for="field_ubicacion">Ubicacion</label>
+                    <input type="text" class="form-control" name="ubicacion" id="field_ubicacion"
+                           formControlName="ubicacion"/>
+                    <div *ngIf="editForm.get('ubicacion')!.invalid && (editForm.get('ubicacion')!.dirty || editForm.get('ubicacion')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ubicacion')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.imagen" for="field_imagen">Imagen</label>
+                    <div>
+                        <img [src]="'data:' + editForm.get('imagenContentType')!.value + ';base64,' + editForm.get('imagen')!.value" style="max-height: 100px;" *ngIf="editForm.get('imagen')!.value" alt="cancha image"/>
+                        <div *ngIf="editForm.get('imagen')!.value" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{ editForm.get('imagenContentType')!.value }}, {{ byteSize(editForm.get('imagen')!.value) }}</span>
+                            <button type="button" (click)="clearInputImage('imagen', 'imagenContentType', 'file_imagen')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon icon="times"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imagen" (change)="setFileData($event, 'imagen', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imagen" id="field_imagen"
+                           formControlName="imagen"/>
+                    <input type="hidden" class="form-control" name="imagenContentType" id="field_imagenContentType"
+                           formControlName="imagenContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.fechaCreacion" for="field_fechaCreacion">Fecha Creacion</label>
+                    <div class="d-flex">
+                        <input id="field_fechaCreacion" type="datetime-local" class="form-control" name="fechaCreacion" formControlName="fechaCreacion" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.estado" for="field_estado">Estado</label>
+                    <input type="checkbox" class="form-control" name="estado" id="field_estado"
+                           formControlName="estado"/>
+                    <div *ngIf="editForm.get('estado')!.invalid && (editForm.get('estado')!.dirty || editForm.get('estado')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('estado')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.cancha.tipoCancha" for="field_tipoCancha">Tipo Cancha</label>
+                    <select class="form-control" id="field_tipoCancha" name="tipoCancha" formControlName="tipoCancha">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="tipoCanchaOption.id === editForm.get('tipoCancha')!.value?.id ? editForm.get('tipoCancha')!.value : tipoCanchaOption" *ngFor="let tipoCanchaOption of tipocanchas; trackBy: trackById">{{ tipoCanchaOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

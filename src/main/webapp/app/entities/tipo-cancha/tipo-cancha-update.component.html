@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-tipo-cancha-heading" jhiTranslate="paizounApp.tipoCancha.home.createOrEditLabel">Create or edit a Tipo Cancha</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.tipoCancha.nombreTipo" for="field_nombreTipo">Nombre Tipo</label>
+                    <input type="text" class="form-control" name="nombreTipo" id="field_nombreTipo"
+                           formControlName="nombreTipo"/>
+                    <div *ngIf="editForm.get('nombreTipo')!.invalid && (editForm.get('nombreTipo')!.dirty || editForm.get('nombreTipo')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nombreTipo')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="paizounApp.tipoCancha.cantidadJugadores" for="field_cantidadJugadores">Cantidad Jugadores</label>
+                    <input type="number" class="form-control" name="cantidadJugadores" id="field_cantidadJugadores"
+                           formControlName="cantidadJugadores"/>
+                    <div *ngIf="editForm.get('cantidadJugadores')!.invalid && (editForm.get('cantidadJugadores')!.dirty || editForm.get('cantidadJugadores')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cantidadJugadores')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('cantidadJugadores')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

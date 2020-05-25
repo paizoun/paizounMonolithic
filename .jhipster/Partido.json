@@ -1,0 +1,44 @@
+{
+    "name": "Partido",
+    "fields": [
+        {
+            "fieldName": "fechaHora",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "finalizado",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "invitacionPartido",
+            "otherEntityRelationshipName": "partido",
+            "relationshipName": "invitacionPartido",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "estadoPartido",
+            "otherEntityRelationshipName": "partido",
+            "relationshipName": "estadoPartido",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20200525050700",
+    "entityTableName": "partido",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}

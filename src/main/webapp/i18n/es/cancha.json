@@ -1,0 +1,29 @@
+{
+  "paizounApp": {
+    "cancha": {
+      "home": {
+        "title": "Canchas",
+        "createLabel": "Crear nuevo Cancha",
+        "createOrEditLabel": "Crear o editar Cancha",
+        "notFound": "Ningún Canchas encontrado"
+      },
+      "created": "Un nuevo Cancha ha sido creado con el identificador {{ param }}",
+      "updated": "Un Cancha ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Cancha ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Cancha {{ id }}?"
+      },
+      "detail": {
+        "title": "Cancha"
+      },
+      "nombre": "Nombre",
+      "descripcion": "Descripcion",
+      "direccion": "Direccion",
+      "ubicacion": "Ubicacion",
+      "imagen": "Imagen",
+      "fechaCreacion": "Fecha Creacion",
+      "estado": "Estado",
+      "tipoCancha": "Tipo Cancha"
+    }
+  }
+}

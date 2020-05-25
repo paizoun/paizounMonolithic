@@ -1,0 +1,38 @@
+{
+    "name": "TipoCancha",
+    "fields": [
+        {
+            "fieldName": "nombreTipo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "cantidadJugadores",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "cancha",
+            "otherEntityRelationshipName": "tipoCancha",
+            "relationshipName": "cancha"
+        }
+    ],
+    "changelogDate": "20200525050400",
+    "entityTableName": "tipo_cancha",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
